@@ -58,7 +58,6 @@ $(function () {
 
 	$('#filter').focus();
 
-
 	var prev_val = false;
 	var timeout_search = false;
 

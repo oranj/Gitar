@@ -19,7 +19,7 @@ function getRepoInformation($directory, $repoWebRoot) {
 				$log_data = parseLog($log);
 
 
-				$output[$repo_name] = array(
+				$output[strtolower($repo_name)] = array(
 					'log' => $log,
 					'date' => $log_data['date'],
 					'url' => $repoWebRoot.$repo,
@@ -27,9 +27,10 @@ function getRepoInformation($directory, $repoWebRoot) {
 					'repo' => $repo
 				);
 			}
-
 		}
 	}
+
+	ksort($output);
 
 	return $output;
 }

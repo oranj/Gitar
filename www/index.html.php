@@ -12,18 +12,33 @@ $repos = getRepoInformation(
 	Service::CFG()->repo['web_root']
 );
 
+
 ?>
+<div class="nav">
+	<ul>
+		<li>
+			<select id="sortby">
+				<option value="title" order="asc">Sort By Title</option>
+				<option value="date">Sort By Last Modified</option>
+			</select>
+		</li>
+		<li>
+			<input type="text" id="filter" data-smartdefault="Filter..." />
+		</li>
+	</ul>
+	<div class="clearing"></div>
+</div>
 <div class="repos">
 <?php foreach ($repos as $repo_name => $repo) { ?>
 	<div class="repo panel"
 		data-search="<?= strtolower($repo_name) ?>"
 		data-date="<?= $repo['date'] ?>"
-		data-title="<?= $repo['title'] ?>">
+		data-title="<?= strtolower($repo['title']) ?>">
 
 		<div class="last_commit"><?= mydate($repo['date'])?></div>
 		<div class="panel_title">
 			<a href="/repos/<?= $repo['repo'] ?>/">
-				<?= $repo_name ?>
+				<?= $repo['title'] ?>
 			</a>
 		</div>
 
