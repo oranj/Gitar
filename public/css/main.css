@@ -1,0 +1,259 @@
+
+html, body {
+    width:100%;
+    height:100%;
+    display:block;
+    padding:0px;
+    margin:0px;
+    background-color:#eaeaea;
+
+}
+
+.search-hidden {
+    display:none;
+}
+.stage {
+    padding:5px;
+    color:#fff;
+}
+
+.smartdefault {
+    color:#aaa;
+    font-style:italic;
+}
+
+.header {
+    background-color:#333;
+    display:block;
+    height:62px;
+    border-top:4px solid #61FFEF;
+    background:#333 linear-gradient(#555, #333);
+
+    padding:10px;
+}
+
+.nav {
+    float:right;
+}
+
+.nav input {
+    display:block;
+}
+
+body{
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+.content a {
+    color: #E85D40;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+    text-decoration: none;
+    text-shadow:0px -1px 1px #fff;
+}
+.content a:hover {
+    color: #84E840;
+    text-decoration: none;
+
+}
+
+@-webkit-keyframes pulsate {
+    0% { -webkit-transform: scale(0.95, 0.95), rotate(355deg); }
+    50% { -webkit-transform: scale(1.05, 1.05) rotate(355deg); }
+}
+
+h1 {
+    text-shadow:2px 2px 5px #333;
+    -webkit-transform:rotate(355deg);
+    width:400px;
+    margin-top:0px;
+}
+
+h1 a {
+    color:#fff;
+    text-decoration:none;
+}
+
+h1:hover {
+    -webkit-animation:pulsate 1s ease-out;
+    -webkit-animation-iteration-count:infinite;
+}
+
+.metal1 {
+    background-color:#000;
+}
+.metal1 .stage {
+    background-color:#0f0;
+}
+
+.metal3 {
+    background-color:#f0f;
+}
+.metal3 .stage {
+    background:url(res/zebra.png);
+}
+
+.metal4 {
+    background-color:#000;
+}
+
+.metal4 .stage {
+    background-color:#ccc;
+    box-shadow: 0px 0px 1000px 20px #74c1a8;
+}
+.metal4 h1 {
+    color:#c700ba;
+}
+
+.metal2 {
+    background: url(res/roth.jpg) center;
+}
+
+.metal2 .stage {
+    display:none;
+}
+
+#metal {
+    cursor:pointer;
+}
+
+.panel {
+    color:#222;
+    border-top:1px solid #fff;
+    border-bottom:1px solid #ccc;
+
+    padding:10px;
+    background:#f2f2f2;
+    background: linear-gradient(to top, #ffffff 0%,#f7f7f7 100%);
+
+}
+
+.repo:first-child {
+    border-radius: 3px 3px 0px 0px;
+}
+
+.repo:last-child{
+    border-radius:0px 0px 3px 3px;
+}
+
+.repo:first-child:last-child {
+    border-radius:3px;
+}
+
+.repo_title {
+    font-weight:bold;
+    border-bottom:1px solid #ccc;
+    margin-bottom:5px;
+}
+
+h1 {
+    font-family: 'Trade Winds', cursive;
+}
+
+.repo_url {
+    font-style:italic;
+    color:#ccc;
+    font-size:15px;
+    line-height:1.6em;
+    transition:color 300ms;
+}
+
+.repo:hover .repo_url {
+    color:#222;
+}
+
+.repo_last_commit {
+    float:right;
+    font-size:12px;
+}
+
+.repo_commit {
+    overflow:hidden;
+    font-size:13px;
+margin:10px 0px;
+    font-family:Courier, monospace;
+}
+
+ul.selection {
+    margin:0px;
+    padding:0px;
+    list-style:none;
+}
+
+ul.selection li {
+    margin:0px;
+    padding:0px;
+    list-style:none;
+}
+
+.categories li a {
+    display:block;
+}
+
+
+.content {
+
+}
+
+.content .btn {
+    margin:5px;
+
+    min-width:50px;
+    padding:8px;
+    border:1px solid #bbb;
+    font-style: normal;
+    font-weight: bold;
+    color:#444;
+    cursor: pointer;
+    text-decoration:none;
+
+    border-radius: 3px;
+    box-shadow:0px 0px 3px rgba(156, 156, 156, 0.6);
+    background:linear-gradient(#fafafa,#dcdcdc);
+
+    text-shadow:0px 1px 0px #fff;
+}
+
+.btn:hover, .btn:focus {
+
+    color:#000;
+    cursor:pointer;
+    text-decoration: none;
+    background: rgb(240,240,240);
+    background:linear-gradient(#fafafa,#f0f0f0);
+}
+
+.btn:hover:active, .btn:focus:active {
+    box-shadow:inset 0px 1px 3px rgba(0,0,0,0.3)
+}
+
+code {
+    display:block;
+    white-space: pre;
+    padding:10px;
+    background-color:#333;
+    color:#fff;
+    border-radius:3px;
+    border-top:1px solid #000;
+    border-bottom:1px solid #888;
+}
+
+table.file_list {
+    width:100%;
+
+}
+
+table.file_list td {
+    border-collapse:collapse;
+    padding:2px 5px;
+    margin:0px;
+}
+
+.clearing {
+    clear:both;
+    }
+
+table.file_list tr:nth-child(2n+1) td {
+    background-color:#eee;
+}

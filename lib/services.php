@@ -1,0 +1,54 @@
+<?php
+
+namespace Roto;
+
+$root = dirname(dirname(__FILE__));
+
+Service::register('CFG', function() use ($root) {
+	return new Config(
+		$root.'/config/config.ini'
+	);
+});
+
+Service::register('View', function() {
+	return new View();
+});
+
+Service::register('Router', function() use ($root) {
+	$router = new Router(
+		Service::View(),
+		$root . '/www/',
+		$root . '/layout/templates/',
+		'_folder.php'
+	);
+
+	$router
+		->map('/.*/', array(
+			'template' => 'html.template.php'
+		))
+		->map('/^\/$/', array(
+			'request' => '/index.html'
+		))
+		->map('/^\/(?P<base>.*)\.(?P<extension>[a-z]{1,5})$/', array(
+			'controller' => "@{base}.php",
+			'view' => "@{base}.@{extension}.php"
+		))
+		->map('/^\/repos\/(?P<reponame>[^\/]*)\/?$/', array(
+			'controller' => 'repos/index.php',
+			'view' => 'repos/index.html.php',
+			'parameters' => array(
+				'repo' => '@reponame'
+			)
+		))
+		->map('/^\/repos\/(?P<reponame>[^\/]+?)\/(?P<branch>[^\/]+?)\/(?P<path>.*?)$/', array(
+			'controller' => 'repos/filesystem.php',
+			'view' => 'repos/filesystem.html.php',
+			'parameters' => array(
+				'branch' => '@branch',
+				'repo' => '@reponame',
+				'filepath' => '@path'
+			)
+		));
+
+	return $router;
+});
