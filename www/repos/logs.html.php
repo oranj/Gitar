@@ -1,9 +1,9 @@
 <div class="nav">
 	<ul>
 		<?php if ($this->page > 0) {?>
-		<li><a href="<?= $this->repo_root ?>:logs/<?= $this->page - 1 ?>">Later Logs</a></li>
+		<li><a href="<?= $this->repo_root ?>:logs/<?= $this->page - 1 ?>">&laquo; Later Logs</a></li>
 		<?php } ?>
-		<li><a href="<?= $this->repo_root ?>:logs/<?= $this->page + 1 ?>">Earlier Logs</a></li>
+		<li><a href="<?= $this->repo_root ?>:logs/<?= $this->page + 1 ?>">Earlier Logs &raquo;</a></li>
 		<li><a href="<?= $this->repo_root ?>">View Filesystem</a></li>
 
 	</ul>
