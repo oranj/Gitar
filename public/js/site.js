@@ -1,40 +1,4 @@
 $(function () {
-	var isMetal = false;
-	var dethClock = null;
-	var classList = ['metal1', 'metal2', 'metal3', 'metal4'];
-	var metalIndex = 4;
-
-	var metalStep = function () {
-		$(document.body).removeClass(classList[metalIndex]);
-		metalIndex = (metalIndex + 1) % classList.length;
-		$(document.body).addClass(classList[metalIndex]);
-	};
-
-	var bringTheMetal = function () {
-		if (!isMetal) {
-			metalStep();
-			dethClock = setInterval(metalStep, 698);
-			$('#metalaudio')[0].play();
-		}
-		isMetal = true;
-	}
-	var metalDisengage = function () {
-		if (isMetal) {
-			$(document.body).removeClass(classList.join(' '));
-			$('#metalaudio')[0].pause();
-			$('#metalaudio')[0].currentTime = 0;
-			metalIndex = 4;
-			clearInterval(dethClock);
-		}
-		isMetal = false;
-	}
-	$('#metal').click(function () {
-		if (!isMetal) {
-			bringTheMetal();
-		} else {
-			metalDisengage();
-		}
-	});
 
 	jQuery.fn.sort = function () {
 		return this.pushStack([].sort.apply(this, arguments), []);
