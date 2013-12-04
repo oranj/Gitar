@@ -6,7 +6,11 @@ $title = makeTitle();
 $this->region('title', $title);
 
 include_once('lib/git.php');
-$repos = getRepoInformation(Service::CFG()->repo['root']);
+
+$repos = getRepoInformation(
+	Service::CFG()->repo['root'],
+	Service::CFG()->repo['web_root']
+);
 
 ?>
 <div class="repos">

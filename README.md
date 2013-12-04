@@ -1,4 +1,4 @@
-RotoApp
+Gitar
 =======
 
-Base Project for Roto
+Gitar is a web wrapper for git. Better description pending

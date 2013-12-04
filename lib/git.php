@@ -1,6 +1,6 @@
 <?php
 
-function getRepoInformation($directory) {
+function getRepoInformation($directory, $repoWebRoot) {
 	$repos = scandir($directory);
 	$output = array();
 
@@ -22,7 +22,7 @@ function getRepoInformation($directory) {
 				$output[$repo_name] = array(
 					'log' => $log,
 					'date' => $log_data['date'],
-					'url' => 'git@10.28.6.12:repos/'.$repo,
+					'url' => $repoWebRoot.$repo,
 					'title' => $repo_name,
 					'repo' => $repo
 				);
