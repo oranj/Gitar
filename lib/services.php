@@ -41,7 +41,17 @@ Service::register('Router', function() use ($root) {
 				'repo' => '@reponame'
 			)
 		))
-		->map('/^\/repos\/(?P<reponame>[^\/]+?)\/(?P<branch>[^\/]+?)\/(?P<path>.*?)(\:(?P<view>.*?))?$/', array(
+		->map('/^\/repos\/(?P<reponame>[^\/]*)\/(?P<branch>[^\/]+?)\/?\:logs(\/(?P<page>[0-9]+))?$/', array(
+			'controller' => 'repos/logs.php',
+			'view' => 'repos/logs.html.php',
+			'parameters' => array(
+				'page' => '@page',
+				'repo' => '@reponame',
+				'branch' => '@branch'
+			),
+			'final' => 'true'
+		))
+		->map('/^\/repos\/(?P<reponame>[^\/]+?)\/(?P<branch>[^\/]+?)\/(?P<path>[^\:]*?)(\:(?P<view>.*?))?$/', array(
 			'controller' => 'repos/filesystem.php',
 			'view' => 'repos/filesystem.html.php',
 			'parameters' => array(

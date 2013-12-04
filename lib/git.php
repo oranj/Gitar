@@ -46,6 +46,41 @@ function parseLog($log) {
 
 }
 
+function getLogs($repo_path, $branch, $start_from = 0, $limit = 20) {
+	chdir($repo_path);
+	$logs = shell_exec($cmd="git log $branch -$limit --skip=$start_from");
+#	drop($cmd);
+	$lines = explode("\n", $logs);
+
+	$log_buffer = array();
+	$line_buffer = array('message' => array(), 'data' => array());
+	$was_indented = false;
+	foreach ($lines as $line) {
+		$is_indented = (substr($line, 0, 4) == '    ');
+		if (! $is_indented && $was_indented) {
+			$log_buffer []= $line_buffer;
+			$line_buffer = array(
+				'message' => array(),
+				'data' => array()
+			);
+		}
+
+		if ($is_indented) {
+			$line_buffer['message'] []= trim($line);
+		} else if (preg_match('/^commit (?P<hash>[a-zA-Z0-9]+)$/', $line, $matches)) {
+			$line_buffer['commit'] = trim($matches['hash']);
+		} else if (preg_match('/^(?P<key>[a-zA-Z]*?):\w*(?P<value>.*)$/', $line, $matches)) {
+			$line_buffer[$matches['key']] = trim($matches['value']);
+		}
+
+		$line_buffer['data'] []= $line;
+
+		$was_indented = $is_indented;
+	}
+
+	return $log_buffer;
+}
+
 function getBranchInformation($repo_path) {
 	$output = array();
 

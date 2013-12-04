@@ -5,7 +5,8 @@ html, body {
     display:block;
     padding:0px;
     margin:0px;
-    background-color:#eaeaea;
+    background-color:#dddddd;
+    background-image:url('/img/bg.jpg');
 
 }
 
@@ -133,6 +134,22 @@ body{
     background:#f2f2f2;
     background: linear-gradient(to top, #ffffff 0%,#f7f7f7 100%);
 
+}
+
+.panel_image {
+    float:left;
+    padding-right:10px;
+}
+
+.panel_author {
+    padding:5px;
+    color:#5A717F;
+    font-weight:bold;
+    font-style:italic;
+}
+
+.panel_content {
+    padding:5px;
 }
 
 .panel:first-child {

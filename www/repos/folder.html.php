@@ -1,3 +1,13 @@
+<?php if ($this->is_root) { ?>
+<div class="nav">
+	<ul>
+		<li>
+			<a href="/repos/<?= $this->repo ?>/<?= $this->branch ?>/:logs">View Logs</a>
+		</li>
+	</ul>
+	<div class="clearing"></div>
+</div>
+<?php } ?>
 <div class="panel">
 	<h2><?= $this->breadcrumbs->render()?></h2>
 	<table class="file_list">
@@ -26,7 +36,6 @@
 </div>
 
 <?php if ($this->readme) {
-
 	echo $this->readme->render();
 
 }?>

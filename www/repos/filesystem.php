@@ -12,6 +12,7 @@ $file_path = $View->file_path ?: "";
 $View->is_file = $file_path && ($file_path[strlen($file_path)-1] !== '/');
 $View->is_root = $file_path == "";
 
+
 $paths = explode("/", sprintf("%s/%s/%s", $repo, $branch, $file_path));
 
 $running_path = '';
