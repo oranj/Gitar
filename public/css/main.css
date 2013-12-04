@@ -32,8 +32,41 @@ html, body {
     padding:10px;
 }
 
-.nav {
-    float:right;
+.header .title {
+    display:block;
+    font-size:30px;
+    font-family: 'Trade Winds', cursive;
+    text-shadow:2px 2px 5px #333;
+    -webkit-transform:rotate(355deg);
+    width:400px;
+    margin-top:0px;
+    color:#fff;
+    text-decoration:none;
+}
+
+.header .title:hover {
+    -webkit-animation:pulsate 1s ease-out;
+    -webkit-animation-iteration-count:infinite;
+}
+
+h1 {
+    color:#e85d40;
+
+    }
+
+
+
+.nav ul {
+    margin:0px;
+    padding:0px;
+    list-style:none;
+}
+
+.nav li {
+    margin:0px;
+    padding:5px 10px;
+    list-style:none;
+    float:left;
 }
 
 .nav input {
@@ -49,7 +82,6 @@ body{
     margin: 0;
     padding: 0;
     vertical-align: baseline;
-    text-decoration: none;
     text-shadow:0px -1px 1px #fff;
 }
 .content a:hover {
@@ -63,22 +95,6 @@ body{
     50% { -webkit-transform: scale(1.05, 1.05) rotate(355deg); }
 }
 
-h1 {
-    text-shadow:2px 2px 5px #333;
-    -webkit-transform:rotate(355deg);
-    width:400px;
-    margin-top:0px;
-}
-
-h1 a {
-    color:#fff;
-    text-decoration:none;
-}
-
-h1:hover {
-    -webkit-animation:pulsate 1s ease-out;
-    -webkit-animation-iteration-count:infinite;
-}
 
 .metal1 {
     background-color:#000;
@@ -129,26 +145,22 @@ h1:hover {
 
 }
 
-.repo:first-child {
+.panel:first-child {
     border-radius: 3px 3px 0px 0px;
 }
 
-.repo:last-child{
+.panel:last-child{
     border-radius:0px 0px 3px 3px;
 }
 
-.repo:first-child:last-child {
+.panel:first-child:last-child {
     border-radius:3px;
 }
 
-.repo_title {
+.panel_title {
     font-weight:bold;
     border-bottom:1px solid #ccc;
     margin-bottom:5px;
-}
-
-h1 {
-    font-family: 'Trade Winds', cursive;
 }
 
 .repo_url {
@@ -159,16 +171,16 @@ h1 {
     transition:color 300ms;
 }
 
-.repo:hover .repo_url {
+.panel:hover .repo_url {
     color:#222;
 }
 
-.repo_last_commit {
+.last_commit {
     float:right;
     font-size:12px;
 }
 
-.repo_commit {
+.commit {
     overflow:hidden;
     font-size:13px;
 margin:10px 0px;

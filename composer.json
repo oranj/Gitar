@@ -3,10 +3,14 @@
 	"description": "My Roto App",
 	"require": {
 		"oranj/Roto": "dev-master",
+		"michelf/php-markdown": "1.4.*@dev",
 		"php": ">=5.3"
 	},
 	"repositories": [{
 		"type": "vcs",
 		"url": "git@github.com:oranj/Roto.git"
+	}, {
+		"type": "vcs",
+		"url": "git@github.com:michelf/php-markdown.git"
 	}]
 }

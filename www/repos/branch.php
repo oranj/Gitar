@@ -11,10 +11,7 @@ $git_path = $repo_path.'.git/';
 if (! is_dir($git_path) && ! file_exists($repo_path.'HEAD')) {
 	throw new \Exception("Attempting to access non git directory: $git_path");
 }
-
-chdir($repo_path);
+require_once('lib/git.php');
 
 $View->repo_name = $repo;
-$View->branch_list = array_filter(array_map(function($string) {
-	return trim(ltrim($string, '* '));
-}, explode("\n", shell_exec('git branch'))));
+$View->branch_list = getBranchInformation($repo_path);

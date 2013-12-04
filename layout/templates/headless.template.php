@@ -17,21 +17,6 @@ $title = makeTitle();
 		<title><?= strip_tags($title) ?></title>
 	</head>
 	<body class="workDesk">
-		<div class="header">
-			<?php /*
-			<div class="nav">
-				<audio preload loop id="metalaudio">
-					<source src="res/guitar.mp3" type="audio/mpeg">
-				</audio>
-				<select id="sortby">
-					<option value="title" order="asc">Sort By Title</option>
-					<option value="date">Sort By Last Modified</option>
-				</select>
-				<input type="text" id="filter" data-smartdefault="Filter..." />
-			</div>*/ ?>
-			<a class="title" href="/"><?= $title ?></a>
-			<div class="clearing"></div>
-		</div>
 		<div class="stage">
 			<div class="content">
 				<?= $View->main() ?>
