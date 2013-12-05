@@ -30,8 +30,9 @@ table {
 .header {
     background-color:#333;
     display:block;
-    height:62px;
+    height:52px;
     border-top:4px solid #68C4FF;
+    border-bottom:2px solid #000;
     background:#333;
 
     padding:10px;
@@ -42,7 +43,7 @@ table {
     font-size:30px;
     font-family: 'Trade Winds', cursive;
     text-shadow:2px 2px 5px #333;
-    -webkit-transform:rotate(355deg);
+    -webkit-transform:rotate(356deg);
     width:400px;
     margin-top:0px;
     color:#fff;
@@ -123,8 +124,8 @@ body{
 
 
 @-webkit-keyframes pulsate {
-    0% { -webkit-transform: scale(0.95, 0.95), rotate(355deg); }
-    50% { -webkit-transform: scale(1.05, 1.05) rotate(355deg); }
+    0% { -webkit-transform: scale(0.95, 0.95), rotate(356deg); }
+    50% { -webkit-transform: scale(1.05, 1.05) rotate(356deg); }
 }
 
 .panel {
@@ -132,7 +133,7 @@ body{
     color:#222;
     border-radius:3px;
 
-    border-bottom:2px solid #ccc;
+    border-bottom:2px solid #aaa;
 
     padding:10px;
     background:#fff;
@@ -157,13 +158,19 @@ body{
 
 .panel_title {
     font-weight:bold;
-    border-bottom:1px solid #ccc;
+    padding-bottom:5px;
+    border-bottom:2px solid #ccc;
     margin-bottom:5px;
 }
 
+.panel_title a {
+    text-decoration: none;
+    }
+
 .repo_url {
+    float:right;
     font-style:italic;
-    color:#ccc;
+    color:#eee;
     font-size:15px;
     line-height:1.6em;
     transition:color 100ms;
