@@ -275,6 +275,52 @@ table.file_list {
 
 }
 
+.breadcrumbs {
+    margin-bottom:5px;
+
+}
+
+.breadcrumbs .inner {
+    border-bottom:2px solid #5a717f;
+    border-radius: 5px;
+    padding:0px 5px;
+    background:#5A717F;
+    background: linear-gradient(to right, #5a717f 89%,#8299A7  90%); /* W3C */
+    float:left;
+
+}
+
+.breadcrumbs .sep {
+    width:0px;
+    height:0px;
+    border-top:14px solid transparent;
+    border-bottom:14px solid transparent;
+    border-left:10px solid #8299A7 ;
+    float:left;
+}
+
+.breadcrumb {
+    text-shadow:0px -1px 1px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(to right, #5a717f 0%,#8299A7  100%); /* W3C */
+    height:28px;
+    line-height: 28px;
+    padding:0px 5px;
+    float:left;
+}
+
+
+
+.breadcrumbs .breadcrumb a {
+    color:#fff;
+    text-decoration:none;
+}
+
+
+.breadcrumbs .breadcrumb.breadcrumb_link:hover {
+    background: linear-gradient(to right, #5a717f 0%,#8299A7 30%, #8299A7  100%); /* W3C */
+}
+
+
 table.file_list td {
     border-collapse:collapse;
     padding:2px 5px;

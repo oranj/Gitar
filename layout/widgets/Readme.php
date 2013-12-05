@@ -1,7 +1,7 @@
 <div class="panel">
 <?php
 if ($this->is_markdown) {
-	echo \Michelf\Markdown::defaultTransform($this->contents);
+	echo \Michelf\MarkdownExtra::defaultTransform($this->contents);
 } else {
 	echo '<pre>'.$this->contents.'</pre>';
 } ?>

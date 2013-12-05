@@ -1,3 +1,4 @@
+<?= $this->breadcrumbs->render()?>
 <?php if ($this->is_root) { ?>
 <div class="nav">
 	<ul>
@@ -9,7 +10,7 @@
 </div>
 <?php } ?>
 <div class="panel">
-	<h2><?= $this->breadcrumbs->render()?></h2>
+
 	<table class="file_list">
 		<?php foreach ($this->dir_contents as $path) {
 

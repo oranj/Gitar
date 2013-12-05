@@ -1,8 +1,19 @@
 <?php
+
 namespace Roto;
 
 $title = makeTitle();
-header('Content-Type: text/html; charset=UTF-8');
+
+$labels = array(
+	'md' => 'View as Markdown',
+	'html' => 'View as HTML',
+	'raw' => 'View Raw'
+);
+$links = array();
+foreach ($View->available_views as $view) {
+	$links[$view] = sprintf("/%s/%s/%s:%s", $View->repo, $View->branch, $View->file_path, $view);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -20,8 +31,23 @@ header('Content-Type: text/html; charset=UTF-8');
 		<title><?= strip_tags($title) ?></title>
 	</head>
 	<body class="workDesk">
+		<div class="header">
+			<a class="title" href="/"><?= $title ?></a>
+			<div class="clearing"></div>
+		</div>
 		<div class="stage">
 			<div class="content">
+				<div class="breadcrumbs">
+					<?= $View->breadcrumbs->render() ?>
+				</div>
+				<div class="nav">
+					<ul>
+<?php foreach ($links as $view => $link) { ?>
+						<li><a href="<?= $link ?>"><?= $labels[$view] ?></a></li>
+<?php } ?>
+					</ul>
+					<div class="clearing"></div>
+				</div>
 				<?= $View->main() ?>
 			</div>
 		</div>

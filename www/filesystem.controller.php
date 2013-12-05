@@ -13,7 +13,7 @@ $View->is_file = $file_path && ($file_path[strlen($file_path)-1] !== '/');
 $View->is_root = $file_path == "";
 
 
-$paths = explode("/", sprintf("%s/%s/%s", $repo, $branch, $file_path));
+$paths = array_filter(explode("/", sprintf("%s/%s/%s", $repo, $branch, $file_path)));
 
 $running_path = '';
 $breadcrumb_links = array();
@@ -32,8 +32,7 @@ foreach ($paths as $i => $path) {
 
 
 $View->breadcrumbs = \Roto\Widget::Breadcrumbs(array(
-	'links' => $breadcrumb_links,
-	'separator' => '/'
+	'links' => $breadcrumb_links
 ));
 
 if (file_exists($repo_path) && is_dir($repo_path)) {
@@ -42,7 +41,25 @@ if (file_exists($repo_path) && is_dir($repo_path)) {
 	$View->file_contents = $out;
 	if ($View->is_file) {
 
+		$available_views = array('raw');
+		if (preg_match('/\.(?P<ext>[a-z]{1,5})$/', $file_path, $matches)) {
+			switch(strtolower($matches['ext'])) {
+				case 'md':
+					$available_views []= 'md';
+					break;
+				case 'html':
+				case 'htm':
+					$available_views []= 'html';
+					break;
+			}
+		}
+		$View->available_views = $available_views;
+		$this->template('file.template.php');
+
 		switch ($this->param('view')) {
+			case 'framemd':
+				$this->view('md.view.php');
+				break;
 			case 'md':
 				$this->template('headless.template.php');
 				$this->view('md.view.php');
@@ -51,26 +68,16 @@ if (file_exists($repo_path) && is_dir($repo_path)) {
 				$this->template(false);
 				$this->view('raw.view.php');
 				break;
+			case 'framehtml':
+				$this->view('html.frame.view.php');
+				break;
 			case 'html':
 				$this->template(false);
 				$this->view('html.view.php');
 				break;
 			default:
-				$available_views = array('raw');
-				if (preg_match('/\.(?P<ext>[a-z]{1,5})$/', $file_path, $matches)) {
-					switch(strtolower($matches['ext'])) {
-						case 'md':
-							$available_views []= 'md';
-							break;
-						case 'html':
-						case 'htm':
-							$available_views []= 'html';
-							break;
-					}
-				}
 
 				$this->view('file.view.php');
-				$View->available_views = $available_views;
 				break;
 		}
 
