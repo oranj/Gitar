@@ -25,7 +25,7 @@ foreach ($paths as $i => $path) {
 		$running_path .= '/';
 	}
 	$breadcrumb_links []= array(
-		'path' => '/repos/'.$running_path,
+		'path' => '/'.$running_path,
 		'base' => $path
 	);
 }

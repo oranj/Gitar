@@ -3,7 +3,7 @@
 	<div class="panel">
 		<div class="last_commit"><?= mydate($branch['log']['timestamp']) ?></div>
 		<div class="panel_title">
-			<a href="/repos/<?= $this->repo_name.'/'.$branch['title'] ?>/">
+			<a href="/<?= $this->repo_name.'/'.$branch['title'] ?>/">
 				<?= $branch['title'] ?>
 			</a>
 		</div>

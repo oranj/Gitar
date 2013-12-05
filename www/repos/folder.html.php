@@ -2,7 +2,7 @@
 <div class="nav">
 	<ul>
 		<li>
-			<a href="/repos/<?= $this->repo ?>/<?= $this->branch ?>/:logs">View Logs</a>
+			<a href="/<?= $this->repo ?>/<?= $this->branch ?>/:logs">View Logs</a>
 		</li>
 	</ul>
 	<div class="clearing"></div>
@@ -14,7 +14,7 @@
 		<?php foreach ($this->dir_contents as $path) {
 
 			$url = sprintf(
-				"/repos/%s/%s/%s%s",
+				"/%s/%s/%s%s",
 				$this->repo,
 				$this->branch,
 				$this->file_path,

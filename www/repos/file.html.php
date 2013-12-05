@@ -7,7 +7,7 @@ $labels = array(
 	'raw' => 'View Raw'
 );
 foreach ($this->available_views as $view) {
-	$link = sprintf("/repos/%s/%s/%s:%s", $this->repo, $this->branch, $this->file_path, $view);
+	$link = sprintf("/%s/%s/%s:%s", $this->repo, $this->branch, $this->file_path, $view);
 ?>
 		<li><a href="<?= $link ?>"><?= $labels[$view] ?></a></li>
 <?php } ?>

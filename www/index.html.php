@@ -37,7 +37,7 @@ $repos = getRepoInformation(
 
 		<div class="last_commit"><?= mydate($repo['log']['timestamp'])?></div>
 		<div class="panel_title">
-			<a href="/repos/<?= $repo['repo'] ?>/">
+			<a href="/<?= $repo['repo'] ?>/">
 				<?= $repo['title'] ?>
 			</a>
 		</div>
