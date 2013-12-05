@@ -55,6 +55,19 @@ function parseLog($log) {
 		$output['timestamp'] = null;
 	}
 
+	$output['author_name'] = null;
+	$output['author_gravatar'] = null;
+	if (isset($output['Author'])) {
+		if (preg_match('/^(?P<author>.+?) \<(?P<email>.+)\>$/', $output['Author'], $matches)) {
+
+			$output['author_name'] = $matches['author'];
+			$output['author_gravatar'] = md5(strtolower(trim($matches['email'])));
+		} else {
+			$output['author_name'] = $output['Author'];
+		}
+	}
+
+
 	return $output;
 
 }

@@ -59,10 +59,19 @@ function mydate($timestamp){
 	if (is_string($timestamp)) { $timestamp = strtotime($timestamp); }
 	$days = floor((time() - $timestamp) / 86400);
 
-	if ($days == 0) {
-		return 'Today';
+	static $today_of_year = null;
+	if (is_null($today_of_year)) {
+		$today_of_year = date('z');
+	}
+	$day_of_year = date('z', $timestamp);
+
+
+	if ($today_of_year == $day_of_year) {
+		return date('g:i a', $timestamp);
+	} else if ($today_of_year == ($day_of_year + 1) ){
+		return 'Yesterday at '.date('g:i a', $timestamp);
 	} else if ($days < 7) {
-		return sprintf("%d day%s ago", $days, $days > 1 ? 's' : '');
+		return date('l \a\t g a', $timestamp);
 	} else if ($days < 34) {
 		$weeks = floor($days / 7);
 		return sprintf('%d week%s ago', $weeks, $weeks > 1 ? 's' : '');

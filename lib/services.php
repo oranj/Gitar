@@ -28,21 +28,20 @@ Service::register('Router', function() use ($root) {
 			'template' => 'html.template.php'
 		))
 		->map('/^\/$/', array(
-			'controller' => 'index.php',
-			'view' => 'index.html.php',
-			'final' => true
+			'controller' => 'repos.controller.php',
+			'view' => 'repos.view.php',
+			'final' => 'true'
 		))
 		->map('/^\/(?P<reponame>[^\/]*)\/?$/', array(
-			'controller' => 'repos/branch.php',
-			'view' => 'repos/branch.html.php',
+			'controller' => 'branch.controller.php',
+			'view' => 'branch.view.php',
 			'parameters' => array(
 				'repo' => '@reponame'
-			),
-			'final' => true
+			)
 		))
-		->map('/\/(?P<reponame>[^\/]*)\/(?P<branch>[^\/]+?)\/?\:logs(\/(?P<page>[0-9]+))?$/', array(
-			'controller' => 'repos/logs.php',
-			'view' => 'repos/logs.html.php',
+		->map('/^\/(?P<reponame>[^\/]*)\/(?P<branch>[^\/]+?)\/?\:logs(\/(?P<page>[0-9]+))?$/', array(
+			'controller' => 'logs.controller.php',
+			'view' => 'logs.view.php',
 			'parameters' => array(
 				'page' => '@page',
 				'repo' => '@reponame',
@@ -51,8 +50,7 @@ Service::register('Router', function() use ($root) {
 			'final' => 'true'
 		))
 		->map('/^\/(?P<reponame>[^\/]+?)\/(?P<branch>[^\/]+?)\/(?P<path>[^\:]*?)(\:(?P<view>.*?))?$/', array(
-			'controller' => 'repos/filesystem.php',
-			'view' => 'repos/filesystem.html.php',
+			'controller' => 'filesystem.controller.php',
 			'parameters' => array(
 				'view' => '@view',
 				'branch' => '@branch',

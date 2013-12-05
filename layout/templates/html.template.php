@@ -1,12 +1,15 @@
 <?php
+
+namespace Roto;
+
 $title = makeTitle();
 ?>
 
 <!DOCTYPE html>
 <!--
-<?php print_r(\Roto\Service::Router()->routingData()) ?>
-
--->
+<?= Widget::RouteInfo(array(
+	'trace' => Service::Router()->routingData()
+))->render(); ?>-->
 <html>
 	<head>
 		<link href="/css/main.css" rel="stylesheet" />

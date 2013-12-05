@@ -30,6 +30,7 @@ foreach ($paths as $i => $path) {
 	);
 }
 
+
 $View->breadcrumbs = \Roto\Widget::Breadcrumbs(array(
 	'links' => $breadcrumb_links,
 	'separator' => '/'
@@ -40,18 +41,19 @@ if (file_exists($repo_path) && is_dir($repo_path)) {
 	$out = shell_exec($cmd = "git show $branch:$file_path");
 	$View->file_contents = $out;
 	if ($View->is_file) {
+
 		switch ($this->param('view')) {
 			case 'md':
 				$this->template('headless.template.php');
-				$this->view('repos/md.html.php');
+				$this->view('md.view.php');
 				break;
 			case 'raw':
 				$this->template(false);
-				$this->view('repos/raw.html.php');
+				$this->view('raw.view.php');
 				break;
 			case 'html':
 				$this->template(false);
-				$this->view('repos/html.html.php');
+				$this->view('html.view.php');
 				break;
 			default:
 				$available_views = array('raw');
@@ -67,14 +69,13 @@ if (file_exists($repo_path) && is_dir($repo_path)) {
 					}
 				}
 
-				$this->view('repos/file.html.php');
+				$this->view('file.view.php');
 				$View->available_views = $available_views;
 				break;
 		}
 
-
 	} else {
-		$this->view('repos/folder.html.php');
+		$this->view('folder.view.php');
 
 		$contents = array_filter(array_slice(explode("\n", $out), 1));
 
@@ -92,4 +93,3 @@ if (file_exists($repo_path) && is_dir($repo_path)) {
 		}
 	}
 }
-

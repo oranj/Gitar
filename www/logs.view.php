@@ -9,28 +9,19 @@
 	</ul>
 	<div class="clearing"></div>
 </div>
-<?php foreach ($this->logs as $log) {
-	$has_email = false;
-	$author = (isset($log['Author']) ? $log['Author'] : '');
-	if (isset($log['Author']) && preg_match('/^(?P<author>.+?) \<(?P<email>.+)\>$/', $log['Author'], $matches)) {
-		$has_email = true;
-		$author = $matches['author'];
-		$gravatar_hash = md5(strtolower(trim($matches['email'])));
-	}
-
-?>
+<?php foreach ($this->logs as $log){ ?>
 <div class="panel">
-	<div class="last_commit"><?= $log['Date'] ?></div>
+	<div class="panel_date"><?= $log['Date'] ?></div>
 	<div class="panel_title">
 		<?= $log['commit'] ?>
 	</div>
-	<?php if ($has_email) { ?>
+	<?php if ($log['author_gravatar']) { ?>
 	<div class="panel_image">
-			<img src="http://www.gravatar.com/avatar/<?= $gravatar_hash ?>?s=60&amp;d=identicon&amp;r=pg" />
-		<?php } ?>
+		<img src="http://www.gravatar.com/avatar/<?= $log['author_gravatar'] ?>?s=60&amp;d=identicon&amp;r=pg" />
 	</div>
+	<?php } ?>
 	<div class="panel_author">
-		<?= $author ?>
+		<?= $log['author_name'] ?>
 	</div>
 	<div class="panel_content"><?= join(" ", $log['message']) ?></div>
 	<div class="clearing"></div>

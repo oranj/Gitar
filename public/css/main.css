@@ -175,16 +175,28 @@ body{
     color:#ccc;
     font-size:15px;
     line-height:1.6em;
-    transition:color 300ms;
+    transition:color 100ms;
 }
 
-.panel:hover .repo_url {
+.panel .repo_url:hover {
     color:#222;
 }
 
-.last_commit {
+.panel_date {
     float:right;
     font-size:12px;
+}
+
+.panel_date label {
+    color:#ccc;
+}
+
+.panel_note {
+    color:#ccc;
+}
+
+.panel_note:hover {
+    color:#333;
 }
 
 .commit {
