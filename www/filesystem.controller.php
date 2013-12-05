@@ -69,7 +69,7 @@ if (file_exists($repo_path) && is_dir($repo_path)) {
 				$this->view('raw.view.php');
 				break;
 			case 'framehtml':
-				$this->view('html.frame.view.php');
+				$this->view('html.view.php');
 				break;
 			case 'html':
 				$this->template(false);

@@ -15,3 +15,9 @@ require_once('lib/git.php');
 
 $View->repo_name = $repo;
 $View->branch_list = getBranchInformation($repo_path);
+
+$View->breadcrumbs = \Roto\Widget::Breadcrumbs(array(
+	'links' => array(
+		array('path' => '/'.$repo, 'base' => $repo)
+	)
+));

@@ -48,7 +48,10 @@ foreach ($View->available_views as $view) {
 					</ul>
 					<div class="clearing"></div>
 				</div>
-				<?= $View->main() ?>
+				<div class="panel">
+					<?= $View->main() ?>
+					<div class="clearing"></div>
+				</div>
 			</div>
 		</div>
 	</body>

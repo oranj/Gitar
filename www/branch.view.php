@@ -1,4 +1,4 @@
-<h1>Branches: <em><?= $this->repo_name ?></em></h1>
+<?= $this->breadcrumbs->render()?>
 <?php foreach ($this->branch_list as $branch) { ?>
 	<div class="panel">
 		<div class="panel_date"><?= mydate($branch['log']['timestamp']) ?></div>

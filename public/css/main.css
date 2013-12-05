@@ -30,9 +30,10 @@ table {
 .header {
     background-color:#333;
     display:block;
-    height:52px;
+    height:62px;
+    line-height:30px;
     border-top:4px solid #68C4FF;
-    border-bottom:2px solid #000;
+    border-bottom:4px solid #000;
     background:#333;
 
     padding:10px;
@@ -95,6 +96,10 @@ h1 {
 
     border-left:1px solid #111;
     border-right:1px solid #777;
+}
+
+a {
+    text-decoration: none;
 }
 
 .nav a {

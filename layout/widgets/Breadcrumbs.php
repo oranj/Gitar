@@ -1,5 +1,7 @@
 <div class="breadcrumbs">
 	<div class="inner">
+		<div class="breadcrumb breadcrumb_link"><a href="/"> - repos -</a></div>
+		<div class="sep"></div>
 <?php
 
 $first = true;
