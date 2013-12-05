@@ -10,6 +10,10 @@ html, body {
 
 }
 
+table {
+    border-collapse: collapse;
+}
+
 .search-hidden {
     display:none;
 }
@@ -28,7 +32,7 @@ html, body {
     display:block;
     height:62px;
     border-top:4px solid #68C4FF;
-    background:#333 linear-gradient(#555, #333);
+    background:#333;
 
     padding:10px;
 }
@@ -70,9 +74,8 @@ h1 {
 
 .nav {
     border-radius:3px;
-    background:#333 linear-gradient(#555, #333);
+    background:#333;
     margin-bottom:5px;
-    border-top: 1px solid #999;
     border-bottom: 2px solid #000;
 
 }
@@ -127,12 +130,12 @@ body{
 .panel {
     margin-bottom:5px;
     color:#222;
-    border-top:1px solid #fff;
-    border-bottom:1px solid #ccc;
+    border-radius:3px;
+
+    border-bottom:2px solid #ccc;
 
     padding:10px;
-    background:#f2f2f2;
-    background: linear-gradient(to top, #ffffff 0%,#f7f7f7 100%);
+    background:#fff;
 
 }
 
@@ -150,18 +153,6 @@ body{
 
 .panel_content {
     padding:5px;
-}
-
-.panel:first-child {
-    border-radius: 3px 3px 0px 0px;
-}
-
-.panel:last-child{
-    border-radius:0px 0px 3px 3px;
-}
-
-.panel:first-child:last-child {
-    border-radius:3px;
 }
 
 .panel_title {
@@ -260,6 +251,7 @@ ul.selection li {
 }
 
 code {
+    overflow: scroll;
     display:block;
     white-space: pre;
     padding:10px;
