@@ -45,7 +45,10 @@ table {
     font-family: 'Trade Winds', cursive;
     text-shadow:2px 2px 5px #333;
     -webkit-transform:rotate(356deg);
-    width:400px;
+
+    width:100%;
+    max-width:400px;
+
     margin-top:0px;
     color:#fff;
     text-decoration:none;
@@ -137,6 +140,7 @@ body{
     margin-bottom:5px;
     color:#222;
     border-radius:3px;
+    overflow: hidden;
 
     border-bottom:2px solid #aaa;
 
