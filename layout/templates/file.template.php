@@ -29,6 +29,7 @@ foreach ($View->available_views as $view) {
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 		<script type="text/javascript"  src="/js/site.js"></script>
 		<title><?= strip_tags($title) ?></title>
+		<meta name="viewport" content="width=device-width, user-scalable=no" />
 	</head>
 	<body class="workDesk">
 		<div class="header">
