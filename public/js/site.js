@@ -3,14 +3,13 @@ $(function () {
 	jQuery.fn.sort = function () {
 		return this.pushStack([].sort.apply(this, arguments), []);
 	}
-
 	$('#sortby').change(function () {
 		var option = $('option:selected', this);
 		var metric = option.attr('value');
 		var asc = option.attr('order') == "asc";
-		$('.repo').sort(function (a, b) {
+		$('.sortable').sort(function (a, b) {
 			return (asc ? -1 : 1) * ($(a).data(metric) < $(b).data(metric) ? 1 : -1);
-		}).appendTo('.repos');
+		}).appendTo('.sortcontainer');
 	}).change();
 
 	$('[data-smartdefault]').each(function () {

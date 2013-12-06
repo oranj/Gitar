@@ -12,14 +12,13 @@ $repos = getRepoInformation(
 	Service::CFG()->repo['web_root']
 );
 
-
 ?>
 <div class="nav">
 	<ul>
 		<li>
 			<select id="sortby">
 				<option value="title" order="asc">Sort By Title</option>
-				<option value="date">Sort By Last Modified</option>
+				<option value="date" selected="selected">Sort By Last Modified</option>
 			</select>
 		</li>
 		<li>
@@ -28,12 +27,12 @@ $repos = getRepoInformation(
 	</ul>
 	<div class="clearing"></div>
 </div>
-<div class="repos">
+<div class="repos sortcontainer">
 <?php foreach ($repos as $repo_name => $repo) {
 	$log = $repo['log'];
 	?>
 
-	<div class="repo panel"
+	<div class="sortable repo panel"
 		data-search="<?= strtolower($repo_name) ?>"
 		data-date="<?= $log['timestamp'] ?>"
 		data-title="<?= strtolower($repo['title']) ?>">

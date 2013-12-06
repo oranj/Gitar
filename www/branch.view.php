@@ -1,8 +1,23 @@
 <?= $this->breadcrumbs->render()?>
+<div class="nav">
+	<ul>
+		<li>
+			<select id="sortby">
+				<option value="title" order="asc">Sort By Title</option>
+				<option value="date" selected="selected">Sort By Last Modified</option>
+			</select>
+		</li>
+	</ul>
+	<div class="clearing"></div>
+</div>
+
+<div class="sortcontainer">
 <?php foreach ($this->branch_list as $branch) {
 	$log = $branch['log'];
 	?>
-	<div class="panel">
+	<div class="sortable panel"
+		data-date="<?= $log['timestamp'] ?>"
+		data-title="<?= $branch['title'] ?>">
 		<div class="panel_date"><?= mydate($log['timestamp']) ?></div>
 		<div class="panel_title">
 			<a href="/<?= $this->repo_name.'/'.$branch['title'] ?>/">
@@ -28,3 +43,4 @@
 		<div class="clearing"></div>
 	</div>
 <?php } ?>
+</div>

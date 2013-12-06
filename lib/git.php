@@ -29,7 +29,9 @@ function getRepoInformation($directory, $repoWebRoot) {
 		}
 	}
 
-	ksort($output);
+	usort($output, function($a, $b) {
+		return $b['log']['timestamp'] - $a['log']['timestamp'];
+	});
 
 	return $output;
 }
