@@ -3,7 +3,7 @@
 <div class="nav">
 	<ul>
 		<li class="nav_link">
-			<a href="/<?= $this->branch_url ?>:logs">View Logs</a>
+			<a href="<?= $this->branch_url ?>:logs">View Logs</a>
 		</li>
 	</ul>
 	<div class="clearing"></div>
