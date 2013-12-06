@@ -56,9 +56,11 @@ $repos = getRepoInformation(
 		<div class="panel_content">
 			<?= nl2br(htmlentities(join("\n", $log['message']))) ?>
 		</div>
+		<?php if ($log['commit']) { ?>
 		<div class="panel_note">
 			SHA1: <?= $log['commit'] ?>
 		</div>
+		<?php } ?>
 		<div class="clearing"></div>
 	</div>
 
