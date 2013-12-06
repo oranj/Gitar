@@ -37,10 +37,10 @@ $View->breadcrumbs = \Roto\Widget::Breadcrumbs(array(
 
 if (file_exists($repo_path) && is_dir($repo_path)) {
 	chdir($repo_path);
-	$out = shell_exec($cmd = "git show $branch:$file_path");
-	$View->file_contents = $out;
-	if ($View->is_file) {
+	$contents = shell_exec($cmd = "git show $branch:$file_path");
 
+	if ($View->is_file) {
+		$View->file_contents = $contents;
 		$available_views = array('raw');
 		if (preg_match('/\.(?P<ext>[a-z]{1,5})$/', $file_path, $matches)) {
 			switch(strtolower($matches['ext'])) {
@@ -84,7 +84,7 @@ if (file_exists($repo_path) && is_dir($repo_path)) {
 	} else {
 		$this->view('folder.view.php');
 
-		$contents = array_filter(array_slice(explode("\n", $out), 1));
+		$contents = array_filter(array_slice(explode("\n", $contents), 1));
 
 		$View->dir_contents = $contents;
 		if ($file_path == "") {

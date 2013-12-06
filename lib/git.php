@@ -94,6 +94,14 @@ function getLogs($repo_path, $branch, $start_from = 0, $limit = 20) {
 	return $log_buffer;
 }
 
+function getFileInformation($repo_path, $branch, $file_path) {
+	if (file_exists($repo_path) && is_dir($repo_path)) {
+		chdir($repo_path);
+		return shell_exec("git show $branch:$file_path");
+	}
+	return null;
+}
+
 function getBranchInformation($repo_path) {
 	$output = array();
 

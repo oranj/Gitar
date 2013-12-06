@@ -56,13 +56,13 @@ table {
     -webkit-animation-iteration-count:infinite;
 }
 
-.content a {
+.panel a {
     color:#549DCC;
     margin: 0;
     padding: 0;
     vertical-align: baseline;
 }
-.content a:hover {
+.panel a:hover {
     color:#68C4FF ;
     text-decoration: none;
 
@@ -75,6 +75,7 @@ h1 {
 
 
 .nav {
+    padding-left:5px;
     border-radius:3px;
     background:#333;
     margin-bottom:5px;
@@ -89,34 +90,33 @@ h1 {
 }
 
 .nav li {
+    color:#fff;
+    background-color:#555;
+    border-bottom:2px solid #333;
     margin:0px;
+    margin-bottom:-2px;
     padding:5px 10px;
     list-style:none;
     float:left;
 
-    border-left:1px solid #111;
-    border-right:1px solid #777;
+    margin-right:5px;
+}
+
+.nav li.nav_link:hover {
+    background-color:#888;
+    border-bottom:2px solid #68c4ff;
+}
+
+.nav li a {
+    color:#fff;
+}
+
+.nav li.nav_link:hover a{
 }
 
 a {
     text-decoration: none;
 }
-
-.nav a {
-    color:#fff;
-}
-
-.nav a:hover {
-    color:#B5E2FF;
-    }
-
-.nav li:first-child {
-    border-left:none;
-}
-
-.nav li:last-child {
-    border-right:none;
-    }
 
 .nav input {
     display:block;
@@ -304,7 +304,7 @@ table.file_list {
 }
 
 .breadcrumb {
-    text-shadow:0px -1px 1px rgba(0, 0, 0, 0.5);
+    text-shadow:0px -2px 0px rgba(102, 123, 136, 0.75);
     background: linear-gradient(to right, #5a717f 0%,#8299A7  100%); /* W3C */
     height:28px;
     line-height: 28px;

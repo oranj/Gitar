@@ -2,7 +2,7 @@
 <?php if ($this->is_root) { ?>
 <div class="nav">
 	<ul>
-		<li>
+		<li class="nav_link">
 			<a href="/<?= $this->repo ?>/<?= $this->branch ?>/:logs">View Logs</a>
 		</li>
 	</ul>

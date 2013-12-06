@@ -44,7 +44,7 @@ foreach ($View->available_views as $view) {
 				<div class="nav">
 					<ul>
 <?php foreach ($links as $view => $link) { ?>
-						<li><a href="<?= $link ?>"><?= $labels[$view] ?></a></li>
+						<li class="nav_link"><a href="<?= $link ?>"><?= $labels[$view] ?></a></li>
 <?php } ?>
 					</ul>
 					<div class="clearing"></div>
