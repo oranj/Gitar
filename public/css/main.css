@@ -274,6 +274,41 @@ code {
     border-bottom:1px solid #888;
 }
 
+table.codeblock {
+    color:#eee;
+    font-size:14px;
+    width:100%;
+    background-color:#333;
+    font-family:Courier, monospace;
+    white-space: pre;
+}
+
+.codeblock .line_no {
+    background-color: #313437;
+}
+
+.codeblock .line {
+    width:100%;
+    padding-left:15px;
+    background-color: #26292c;
+}
+
+.codeblock .line.remove {
+    background-color:#fcc;
+    color:#333;
+    border:#c00 solid;
+    border-width:1px 0px;
+
+}
+
+.codeblock .line.add {
+    background-color:#cfe;
+    color:#333;
+    border:#06851F solid;
+    border-width:1px 0px;
+
+}
+
 table.file_list {
     width:100%;
 
@@ -284,12 +319,20 @@ table.file_list {
 
 }
 
+.breadcrumb_last {
+    border-radius: 0px 5px 5px 0px;
+    background:#8299A7;
+    height:28px;
+    line-height: 28px;
+    padding:0px 5px;
+    float:left;
+}
+
 .breadcrumbs .inner {
     border-bottom:2px solid #5a717f;
     border-radius: 5px;
-    padding:0px 5px;
-    background:#5A717F;
-    background: linear-gradient(to right, #5a717f 89%,#8299A7  90%); /* W3C */
+    padding:0px 0px 0px 5px;
+    background: #5a717f;
     float:left;
 
 }

@@ -19,6 +19,9 @@ foreach ($this->links as $link) {
 	}
 	$i++;
 }
-?>	</div>
+?>
+		<div class="breadcrumb_last"></div>
+	</div>
+
 	<div class="clearing"></div>
 </div>

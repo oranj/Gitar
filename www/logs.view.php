@@ -3,8 +3,10 @@
 	<ul>
 		<?php if ($this->page > 0) {?>
 		<li class="nav_link"><a href="<?= $this->repo_root ?>:logs/<?= $this->page - 1 ?>">&laquo; Later Logs</a></li>
-		<?php } ?>
+<?php } /* not else */ if ($this->page < $this->total_pages-1) { ?>
 		<li class="nav_link"><a href="<?= $this->repo_root ?>:logs/<?= $this->page + 1 ?>">Earlier Logs &raquo;</a></li>
+<?php } ?>
+
 		<li class="nav_link"><a href="<?= $this->repo_root ?>">View Filesystem</a></li>
 
 	</ul>
@@ -14,7 +16,7 @@
 <div class="panel">
 	<div class="panel_date"><?= $log['Date'] ?></div>
 	<div class="panel_title">
-		<a href="/<?= $this->repo ?>/<?= $log['commit'] ?>/">
+		<a href="/<?= $this->repo ?>/$<?= $log['commit'] ?>/">
 			<?= $log['commit'] ?>
 		</a>
 	</div>
@@ -32,11 +34,12 @@
 <?php } ?>
 <div class="nav">
 	<ul>
-		<?php if ($this->page > 0) {?>
-		<li><a href="<?= $this->repo_root ?>:logs/<?= $this->page - 1 ?>">&laquo; Later Logs</a></li>
-		<?php } ?>
-		<li><a href="<?= $this->repo_root ?>:logs/<?= $this->page + 1 ?>">Earlier Logs &raquo;</a></li>
-		<li><a href="<?= $this->repo_root ?>">View Filesystem</a></li>
+<?php if ($this->page > 0) {?>
+		<li class="nav_link"><a href="<?= $this->repo_root ?>:logs/<?= $this->page - 1 ?>">&laquo; Later Logs</a></li>
+<?php } /* not else */ if ($this->page < $this->total_pages-1) { ?>
+		<li class="nav_link"><a href="<?= $this->repo_root ?>:logs/<?= $this->page + 1 ?>">Earlier Logs &raquo;</a></li>
+<?php } ?>
+		<li class="nav_link"><a href="<?= $this->repo_root ?>">View Filesystem</a></li>
 
 	</ul>
 	<div class="clearing"></div>

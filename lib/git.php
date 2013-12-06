@@ -72,6 +72,12 @@ function parseLog($log) {
 
 }
 
+function getCommitCount($repo_path, $branch) {
+	chdir($repo_path);
+	$count = shell_exec("git rev-list HEAD --count");
+	return $count;
+}
+
 function getLogs($repo_path, $branch, $start_from = 0, $limit = 20) {
 	chdir($repo_path);
 	$logs = shell_exec($cmd="git log $branch -$limit --skip=$start_from");
@@ -92,6 +98,63 @@ function getLogs($repo_path, $branch, $start_from = 0, $limit = 20) {
 
 
 	return $log_buffer;
+}
+
+function getFileDiff($repo_path, $commit, $file) {
+	chdir($repo_path);
+	$list = shell_exec("git diff ${commit}^..${commit} -- $file");
+	$lines = explode("\n", $list);
+
+	$in_change = false;
+	$out = array();
+
+	$oldline = null;
+	$newline = null;
+
+	foreach ($lines as $line) {
+		if (! $in_change) {
+			if (preg_match('/^@@ \-(?P<oldline>[0-9]+),(?P<oldlength>[0-9]+) \+(?P<newline>[0-9]+),(?P<newlength>[0-9]+) @@/', $line, $matches)) {
+
+				$oldline = $matches['oldline'];
+				$newline = $matches['newline'];
+
+				$in_change = true;
+			}
+		} else if (strlen($line) && $line[0] == '+') {
+			$out[] = array(
+				'status' => 'add',
+				'newlineno' => $newline,
+				'oldlineno' => $oldline,
+				'line' => substr($line, 1)
+			);
+			$newline++;
+		} else if (strlen($line) && $line[0] == '-') {
+			$out[] = array(
+				'status' => 'remove',
+				'newlineno' => $newline,
+				'oldlineno' => $oldline,
+				'line' => substr($line, 1)
+			);
+			$oldline++;
+		} else {
+			$out[] = array(
+				'status' => '',
+				'newlineno' => $newline,
+				'oldlineno' => $oldline,
+				'line' => substr($line, 1)
+			);
+			$newline++;
+			$oldline++;
+		}
+	}
+
+	return $out;
+}
+
+function getCommitModifiedFiles($repo_path, $commit) {
+	chdir($repo_path);
+	$list = shell_exec("git show --pretty=\"format:\" --name-only $commit");
+	return array_values(array_filter(explode("\n", $list)));
 }
 
 function getFileInformation($repo_path, $branch, $file_path) {

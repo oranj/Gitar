@@ -11,7 +11,7 @@ $labels = array(
 );
 $links = array();
 foreach ($View->available_views as $view) {
-	$links[$view] = sprintf("/%s/%s/%s:%s", $View->repo, $View->branch, $View->file_path, $view);
+	$links[$view] = sprintf("%s%s:%s", $View->branch_url, $View->file_path, $view);
 }
 
 ?>

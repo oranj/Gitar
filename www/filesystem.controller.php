@@ -2,9 +2,18 @@
 
 namespace Roto;
 
+require('lib/git.php');
+
+$branch = $this->param('branch');
+if ($branch[0] == '$') {
+	$View->is_commit = true;
+	$branch = substr($branch, 1);
+}
 
 $View->repo = $repo = $this->param('repo');
-$View->branch = $branch = $this->param('branch');
+$View->branch_url = sprintf("/%s/%s/", $repo, $this->param('branch'));
+$View->branch = $branch;
+
 $View->repo_path = $repo_path = Service::CFG()->repo['root'].$repo.'/';
 $View->file_path = $this->param('filepath');
 
@@ -13,7 +22,7 @@ $View->is_file = $file_path && ($file_path[strlen($file_path)-1] !== '/');
 $View->is_root = $file_path == "";
 
 
-$paths = array_filter(explode("/", sprintf("%s/%s/%s", $repo, $branch, $file_path)));
+$paths = array_filter(explode("/", sprintf("%s/%s", $View->branch_url, $file_path)));
 
 $running_path = '';
 $breadcrumb_links = array();
@@ -26,7 +35,7 @@ foreach ($paths as $i => $path) {
 	}
 	$breadcrumb_links []= array(
 		'path' => '/'.$running_path,
-		'base' => $path
+		'base' => ltrim($path, '$')
 	);
 }
 
@@ -75,8 +84,11 @@ if (file_exists($repo_path) && is_dir($repo_path)) {
 				$this->template(false);
 				$this->view('html.view.php');
 				break;
+			case 'commit':
+				$View->diff = getFileDiff($repo_path, $branch, $file_path);
+				$this->view('diff.view.php');
+				break;
 			default:
-
 				$this->view('file.view.php');
 				break;
 		}
@@ -97,6 +109,9 @@ if (file_exists($repo_path) && is_dir($repo_path)) {
 					break;
 				}
 			}
+		}
+		if ($View->is_commit) {
+			$View->modified_files = getCommitModifiedFiles($repo_path, $branch);
 		}
 	}
 }
