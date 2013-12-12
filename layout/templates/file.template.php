@@ -33,8 +33,10 @@ foreach ($View->available_views as $view) {
 	</head>
 	<body class="workDesk">
 		<div class="header">
-			<a class="title" href="/"><?= $title ?></a>
-			<div class="clearing"></div>
+			<div class="header-inner">
+				<a class="title" href="/"><?= $title ?></a>
+				<div class="clearing"></div>
+			</div>
 		</div>
 		<div class="stage">
 			<div class="content">
@@ -55,5 +57,6 @@ foreach ($View->available_views as $view) {
 				</div>
 			</div>
 		</div>
+		<div id="footer_icon"></div>
 	</body>
 </html>

@@ -124,9 +124,9 @@ if (file_exists($repo_path) && is_dir($repo_path)) {
 			$this->view('folder.view.php');
 		}
 		
-		if ($View->is_commit) {
+	#	if ($View->is_commit) {
 			$View->modified_files = getCommitModifiedFiles($repo_path, $branch);
-		}
+	#	}
 
 	}
 }

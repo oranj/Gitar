@@ -37,6 +37,11 @@ table {
     font-style:italic;
 }
 
+.header-inner, .stage {
+    max-width:1000px;
+    margin:0px auto;
+}
+
 .header {
     background-color:#333;
     display:block;
@@ -394,4 +399,11 @@ table.file_list td {
 
 table.file_list tr:nth-child(2n+1) td {
     background-color:#eee;
+}
+
+#footer_icon {
+	width:42px;
+	height:42px;
+	margin:10px auto;
+	background:url('/img/gitarsm.png') no-repeat center;
 }
