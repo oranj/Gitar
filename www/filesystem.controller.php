@@ -107,12 +107,18 @@ if (file_exists($repo_path) && is_dir($repo_path)) {
 		}
 
 	} else {
-		$this->view('folder.view.php');
 
 		$contents = array_filter(array_slice(explode("\n", $contents), 1));
-
 		$View->dir_contents = $contents;
-		if ($file_path == "") {
+
+		
+		if ($View->is_root) {
+			$View->branchSwitcher = \Roto\Widget::BranchSwitcher(array(
+				'id' => 'branchSwitcher',
+				'repo' => $repo,
+				'current_branch' => $branch,
+				'branch_names' => array_keys(getBranchInformation($repo_path, false))
+			));
 			foreach ($contents as $path) {
 				if (preg_match('/readme(?P<ext>\.[a-z]+)?/', strtolower($path), $matches)) {
 					$View->readme = \Roto\Widget::Readme(array(
@@ -122,9 +128,12 @@ if (file_exists($repo_path) && is_dir($repo_path)) {
 					break;
 				}
 			}
-		}
-		if ($View->is_commit) {
-			$View->modified_files = getCommitModifiedFiles($repo_path, $branch);
+			$this->view('root.view.php');
+		} else {
+			if ($View->is_commit) {
+				$View->modified_files = getCommitModifiedFiles($repo_path, $branch);
+			}
+			$this->view('folder.view.php');
 		}
 	}
 }

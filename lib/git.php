@@ -176,7 +176,7 @@ function getFileInformation($repo_path, $branch, $file_path) {
 	return null;
 }
 
-function getBranchInformation($repo_path) {
+function getBranchInformation($repo_path, $include_logs = true) {
 	$output = array();
 
 	chdir($repo_path);
@@ -185,8 +185,12 @@ function getBranchInformation($repo_path) {
 	}, explode("\n", shell_exec('git branch'))));
 
 	foreach ($branches as $branch) {
-		$log = shell_exec("git log $branch -1");
-		$log_data = parseLog($log);
+		if ($include_logs) {
+			$log = shell_exec("git log $branch -1");
+			$log_data = parseLog($log);
+		} else {
+			$log_data = null;
+		}
 
 		$output[$branch] = array(
 			'log' => $log_data,
