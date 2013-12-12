@@ -52,6 +52,7 @@ if (file_exists($repo_path) && is_dir($repo_path)) {
 	if ($View->is_file) {
 		$View->file_contents = $contents;
 		$available_views = array('raw');
+		$viewParam = null;
 		if (preg_match('/\.(?P<ext>[a-z]{1,5})$/', $file_path, $matches)) {
 			switch(strtolower($matches['ext'])) {
 				case 'md':

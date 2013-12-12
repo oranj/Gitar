@@ -14,14 +14,16 @@ if (! is_dir($git_path) && ! file_exists($repo_path.'HEAD')) {
 require_once('lib/git.php');
 
 $View->repo_name = $repo;
-$View->branch_list = getBranchInformation($repo_path);
+$branch_list = getBranchInformation($repo_path);
 
 $autoloadBranch = null;
-if (count($View->branch_list) == 1) {
-	$autoloadBranch = key($View->branch_list);
-} else if (isset($View->branch_list['master'])) { 
+if (count($branch_list) == 1) {
+	$autoloadBranch = key($branch_list);
+} else if (isset($branch_list['master'])) { 
 	$autoloadBranch = 'master';
 }
+
+$View->branch_list = $branch_list;
 
 if ($this->param('option') == 'auto') {
 	if (isset($autoloadBranch)) {
