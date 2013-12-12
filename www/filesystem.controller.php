@@ -52,7 +52,6 @@ if (file_exists($repo_path) && is_dir($repo_path)) {
 	if ($View->is_file) {
 		$View->file_contents = $contents;
 		$available_views = array('raw');
-		$viewParam = $this->param('view');
 		if (preg_match('/\.(?P<ext>[a-z]{1,5})$/', $file_path, $matches)) {
 			switch(strtolower($matches['ext'])) {
 				case 'md':
@@ -62,8 +61,12 @@ if (file_exists($repo_path) && is_dir($repo_path)) {
 				case 'html':
 				case 'htm':
 					$available_views []= 'html';
+					$viewParam = 'framehtml';
 					break;
 			}
+		}
+		if($this->param('view')) {
+			$viewParam = $this->param('view');
 		}
 		$View->available_views = $available_views;
 		$this->template('file.template.php');
