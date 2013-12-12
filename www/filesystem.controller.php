@@ -39,8 +39,6 @@ foreach ($paths as $i => $path) {
 	);
 }
 
-$gitarInfo = getGitarInformation($repo_path, $branch);
-
 $View->breadcrumbs = \Roto\Widget::Breadcrumbs(array(
 	'links' => $breadcrumb_links
 ));
@@ -104,7 +102,6 @@ if (file_exists($repo_path) && is_dir($repo_path)) {
 
 		$contents = array_filter(array_slice(explode("\n", $contents), 1));
 		$View->dir_contents = $contents;
-
 		
 		if ($View->is_root) {
 			$View->branchSwitcher = \Roto\Widget::BranchSwitcher(array(
@@ -124,10 +121,12 @@ if (file_exists($repo_path) && is_dir($repo_path)) {
 			}
 			$this->view('root.view.php');
 		} else {
-			if ($View->is_commit) {
-				$View->modified_files = getCommitModifiedFiles($repo_path, $branch);
-			}
 			$this->view('folder.view.php');
 		}
+		
+		if ($View->is_commit) {
+			$View->modified_files = getCommitModifiedFiles($repo_path, $branch);
+		}
+
 	}
 }
