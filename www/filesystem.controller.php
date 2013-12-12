@@ -52,10 +52,12 @@ if (file_exists($repo_path) && is_dir($repo_path)) {
 	if ($View->is_file) {
 		$View->file_contents = $contents;
 		$available_views = array('raw');
+		$viewParam = $this->param('view');
 		if (preg_match('/\.(?P<ext>[a-z]{1,5})$/', $file_path, $matches)) {
 			switch(strtolower($matches['ext'])) {
 				case 'md':
 					$available_views []= 'md';
+					$viewParam = 'framemd';
 					break;
 				case 'html':
 				case 'htm':
@@ -65,19 +67,7 @@ if (file_exists($repo_path) && is_dir($repo_path)) {
 		}
 		$View->available_views = $available_views;
 		$this->template('file.template.php');
-		$viewParam = $this->param('view');
-
-		if (! $viewParam && isset($gitarInfo['behavior'])) {
-			foreach ($gitarInfo['behavior'] as $key => $data) {
-				$regex = "/".str_replace('.', '\.', str_replace('*', '(.*?)', $key)).'/';
-				if (preg_match($regex, $file_path)) {
-					if (isset($data['view'])) {
-						$viewParam = $data['view'];
-					}
-				}
-			}
-		}
-
+		
 		switch ($viewParam) {
 			case 'framemd':
 				$this->view('md.view.php');
