@@ -22,7 +22,7 @@ $View->is_file = $file_path && ($file_path[strlen($file_path)-1] !== '/');
 $View->is_root = $file_path == "";
 
 
-$paths = array_filter(explode("/", sprintf("%s/%s", $View->branch_url, $file_path)));
+$paths = array_values(array_filter(explode("/", sprintf("%s/%s", $View->branch_url, $file_path))));
 
 $running_path = '';
 $breadcrumb_links = array();
@@ -39,6 +39,7 @@ foreach ($paths as $i => $path) {
 	);
 }
 
+$gitarInfo = getGitarInformation($repo_path, $branch);
 
 $View->breadcrumbs = \Roto\Widget::Breadcrumbs(array(
 	'links' => $breadcrumb_links
@@ -64,8 +65,20 @@ if (file_exists($repo_path) && is_dir($repo_path)) {
 		}
 		$View->available_views = $available_views;
 		$this->template('file.template.php');
+		$viewParam = $this->param('view');
 
-		switch ($this->param('view')) {
+		if (! $viewParam && isset($gitarInfo['behavior'])) {
+			foreach ($gitarInfo['behavior'] as $key => $data) {
+				$regex = "/".str_replace('.', '\.', str_replace('*', '(.*?)', $key)).'/';
+				if (preg_match($regex, $file_path)) {
+					if (isset($data['view'])) {
+						$viewParam = $data['view'];
+					}
+				}
+			}
+		}
+
+		switch ($viewParam) {
 			case 'framemd':
 				$this->view('md.view.php');
 				break;

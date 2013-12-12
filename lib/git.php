@@ -1,5 +1,14 @@
 <?php
 
+function getGitarInformation($directory, $branch) {
+	chdir($directory);
+        $output = shell_exec("git show $branch:gitar.json");
+	if ($output) {
+		return json_decode($output, true);
+	}
+	return null;
+}
+
 function getRepoInformation($directory, $repoWebRoot) {
 	$repos = scandir($directory);
 	$output = array();
