@@ -278,6 +278,7 @@ code {
 
 pre, code {
 	background: #333;
+	color: white;
 	font-family: Consolas,"Courier New",Courier,monospace;
 	font-size: .9em;
 	@include border-radius(3px);
