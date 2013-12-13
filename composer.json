@@ -1,11 +1,26 @@
 {
-	"name": "oranj/roto-app",
-	"description": "My Roto App",
+	"name": "oranj/Gitar",
+	"type": "project",
+	"description": "Git Repo Management Application",
 	"require": {
 		"oranj/Roto": "dev-master",
 		"michelf/php-markdown": "1.4.*@dev",
 		"php": ">=5.3"
 	},
+	"authors": [
+		{
+			"name": "Ray Minge",
+			"email": "ray@rayminge.com",
+			"homepage": "http://oranj.io",
+			"role": "Lead"
+		},
+		{
+			"name": "Jesse G. Donat",
+			"email": "donatj@gmail.com",
+			"homepage": "http://donatstudios.com",
+			"role": "Contributor"
+		}
+	],
 	"repositories": [{
 		"type": "vcs",
 		"url": "git@github.com:oranj/Roto.git"
