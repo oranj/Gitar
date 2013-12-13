@@ -269,15 +269,17 @@ ul.selection {
 //	border-bottom: 1px solid #888;
 //}
 
-code, tt {
-	padding: 2px 5px;
+code {
+	padding: 2px;
+	margin: 3px;
 	white-space: nowrap;
-	@include box-shadow(0 0 6px rgba(0, 0, 0, 0.5));
+	// @include box-shadow(0 0 6px rgba(0, 0, 0, 0.5));
 }
 
 pre, code {
-	background: url(images/box_shadow.png) bottom repeat-x rgba(223, 221, 221, .3); //#DFDDDD;
+	background: #333;
 	font-family: Consolas,"Courier New",Courier,monospace;
+	font-size: .9em;
 	@include border-radius(3px);
 }
 
@@ -287,14 +289,14 @@ pre {
 	font-size: .9em;
 	padding: 22px;
 	line-height: 1.4em;
-	@include box-shadow(0 0 6px rgba(0, 0, 0, 0.5));
+	// @include box-shadow(0 0 6px rgba(0, 0, 0, 0.5));
 
 	code {
 		margin: 0;
 		padding: 0;
 		white-space: pre;
 		background: transparent;
-		@include box-shadow(0 0 0 transparent);
+		// @include box-shadow(0 0 0 transparent);
 		display: block;
 		overflow: auto;
 	}
