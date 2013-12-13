@@ -9,8 +9,5 @@
 	"repositories": [{
 		"type": "vcs",
 		"url": "git@github.com:oranj/Roto.git"
-	}, {
-		"type": "vcs",
-		"url": "git@github.com:michelf/php-markdown.git"
 	}]
 }
