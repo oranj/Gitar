@@ -8,3 +8,5 @@ Thumbs.db
 .DS_Store
 ._*
 sftp-config.json
+/.sass-cache/
+/.idea/

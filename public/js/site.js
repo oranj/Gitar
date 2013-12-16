@@ -12,6 +12,11 @@ $(function () {
 		}).appendTo('.sortcontainer');
 	}).change();
 
+	$('[data-branch-switcher]').change(function() {
+		var url = '/' + $(this).data('repo') + '/' + $(this).val() +'/';
+		document.location = url;
+	});
+
 	$('[data-smartdefault]').each(function () {
 		$(this).focus(function () {
 			if ($(this).hasClass('smartdefault')) {

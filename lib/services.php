@@ -32,10 +32,11 @@ Service::register('Router', function() use ($root) {
 			'view' => 'repos.view.php',
 			'final' => 'true'
 		))
-		->map('/^\/(?P<reponame>[^\/]*)\/?$/', array(
+		->map('/^\/(?P<reponame>[^\/]*)\/?(\:(?P<option>.*?))?$/', array(
 			'controller' => 'branch.controller.php',
 			'view' => 'branch.view.php',
 			'parameters' => array(
+				'option' => '@option',
 				'repo' => '@reponame'
 			)
 		))

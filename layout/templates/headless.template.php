@@ -23,8 +23,11 @@ header('Content-Type: text/html; charset=UTF-8');
 	<body class="workDesk">
 		<div class="stage">
 			<div class="content">
+				<div class="panel">
 				<?= $View->main() ?>
+				</div>
 			</div>
 		</div>
+		<div id="footer_icon"></div>
 	</body>
 </html>

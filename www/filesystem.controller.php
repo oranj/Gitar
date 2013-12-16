@@ -22,7 +22,7 @@ $View->is_file = $file_path && ($file_path[strlen($file_path)-1] !== '/');
 $View->is_root = $file_path == "";
 
 
-$paths = array_filter(explode("/", sprintf("%s/%s", $View->branch_url, $file_path)));
+$paths = array_values(array_filter(explode("/", sprintf("%s/%s", $View->branch_url, $file_path))));
 
 $running_path = '';
 $breadcrumb_links = array();
@@ -39,7 +39,6 @@ foreach ($paths as $i => $path) {
 	);
 }
 
-
 $View->breadcrumbs = \Roto\Widget::Breadcrumbs(array(
 	'links' => $breadcrumb_links
 ));
@@ -51,21 +50,27 @@ if (file_exists($repo_path) && is_dir($repo_path)) {
 	if ($View->is_file) {
 		$View->file_contents = $contents;
 		$available_views = array('raw');
+		$viewParam = null;
 		if (preg_match('/\.(?P<ext>[a-z]{1,5})$/', $file_path, $matches)) {
 			switch(strtolower($matches['ext'])) {
 				case 'md':
 					$available_views []= 'md';
+					$viewParam = 'framemd';
 					break;
 				case 'html':
 				case 'htm':
 					$available_views []= 'html';
+					$viewParam = 'framehtml';
 					break;
 			}
 		}
+		if($this->param('view')) {
+			$viewParam = $this->param('view');
+		}
 		$View->available_views = $available_views;
 		$this->template('file.template.php');
-
-		switch ($this->param('view')) {
+		
+		switch ($viewParam) {
 			case 'framemd':
 				$this->view('md.view.php');
 				break;
@@ -94,12 +99,17 @@ if (file_exists($repo_path) && is_dir($repo_path)) {
 		}
 
 	} else {
-		$this->view('folder.view.php');
 
 		$contents = array_filter(array_slice(explode("\n", $contents), 1));
-
 		$View->dir_contents = $contents;
-		if ($file_path == "") {
+		
+		if ($View->is_root) {
+			$View->branchSwitcher = \Roto\Widget::BranchSwitcher(array(
+				'id' => 'branchSwitcher',
+				'repo' => $repo,
+				'current_branch' => $branch,
+				'branch_names' => array_keys(getBranchInformation($repo_path, false))
+			));
 			foreach ($contents as $path) {
 				if (preg_match('/readme(?P<ext>\.[a-z]+)?/', strtolower($path), $matches)) {
 					$View->readme = \Roto\Widget::Readme(array(
@@ -109,9 +119,14 @@ if (file_exists($repo_path) && is_dir($repo_path)) {
 					break;
 				}
 			}
+			$this->view('root.view.php');
+		} else {
+			$this->view('folder.view.php');
 		}
-		if ($View->is_commit) {
+		
+	#	if ($View->is_commit) {
 			$View->modified_files = getCommitModifiedFiles($repo_path, $branch);
-		}
+	#	}
+
 	}
 }

@@ -39,7 +39,7 @@ $repos = getRepoInformation(
 
 		<div class="panel_date"><label>Last updated </label><?= mydate($log['timestamp']) ?></div>
 		<div class="panel_title">
-			<a href="/<?= $repo['repo'] ?>/">
+			<a href="/<?= $repo['repo'] ?>/:auto">
 				<?= $repo['title'] ?>
 			</a>
 		</div>
