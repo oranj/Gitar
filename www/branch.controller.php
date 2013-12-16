@@ -21,7 +21,18 @@ if (count($branch_list) == 1) {
 	$autoloadBranch = key($branch_list);
 } else if (isset($branch_list['master'])) { 
 	$autoloadBranch = 'master';
+} else {	
+	$latest = null;
+	foreach ($branch_list as $branch => $data) {
+		if ((! $latest) || ((int)($data['log']['timestamp']) > (int)($latest['log']['timestamp']))) {
+			$latest = $data;
+		}
+	}
+	if ($latest) {
+		$autoloadBranch = $latest['title'];
+	}
 }
+
 
 $View->branch_list = $branch_list;
 
