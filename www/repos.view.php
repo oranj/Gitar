@@ -57,7 +57,7 @@ $repos = getRepoInformation(
 		</div>
 		<?php if (isset($log['commit'])) { ?>
 		<div class="panel_note">
-			SHA1: <?= $log['commit'] ?>
+			<a href="/<?= $repo['repo']?>/$<?= $log['commit'] ?>/"><?= $log['commit'] ?></a>
 		</div>
 		<?php } ?>
 		<div class="clearing"></div>
