@@ -9,6 +9,12 @@ function getGitarInformation($directory, $branch) {
 	return null;
 }
 
+function getBranchOfCommit($adirectory, $commitHash) {
+	chdir($directory);
+	$output = shell_exec("git reflog show --all | grep $commitHash");
+	drop($output);
+}
+
 function getRepoInformation($directory, $repoWebRoot) {
 	$repos = scandir($directory);
 	$output = array();

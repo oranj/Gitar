@@ -40,7 +40,7 @@ $(function () {
 					var n = 0;
 					if (val.length > 1) {
 						$("[data-search]").each(function (i, el) {
-							if ($(this).data('search').search(val.toLowerCase()) === -1) {
+							if ($(this).data('search').toString().search(val.toLowerCase()) === -1) {
 								$(this).toggleClass('search-hidden', true);
 							} else {
 								$(this).toggleClass('search-hidden', false);

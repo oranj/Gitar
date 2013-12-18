@@ -33,7 +33,7 @@ $repos = getRepoInformation(
 	?>
 
 	<div class="sortable repo panel"
-		data-search="<?= strtolower($repo_name) ?>"
+		data-search="<?= strtolower($repo['title']) ?>"
 		data-date="<?= $log['timestamp'] ?>"
 		data-title="<?= strtolower($repo['title']) ?>">
 
