@@ -1,6 +1,7 @@
 <?php
 
 $lines = explode("\n", $this->file_contents);
+$lines = array_map('htmlentities', $lines);
 
 ?>
 <table class="codeblock">
