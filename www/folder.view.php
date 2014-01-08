@@ -50,5 +50,6 @@
 			<td style="width:100%"><a href="<?= $url ?>"><?= $filename ?></td>
 		</tr>
 	<?php } ?>
+	</table>
 </div>
 <?php }
