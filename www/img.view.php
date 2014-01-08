@@ -1,0 +1,1 @@
+<img src="<?= sprintf("%s%s:%s", $this->branch_url, $this->file_path, 'raw') ?>" style="max-width: 100%" />

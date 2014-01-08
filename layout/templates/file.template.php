@@ -7,7 +7,8 @@ $title = makeTitle();
 $labels = array(
 	'md' => 'View as Markdown',
 	'html' => 'View as HTML',
-	'raw' => 'View Raw'
+	'raw' => 'View Raw',
+	'img' => 'View Image',
 );
 $links = array();
 foreach ($View->available_views as $view) {
@@ -46,7 +47,7 @@ foreach ($View->available_views as $view) {
 				<div class="nav">
 					<ul>
 <?php foreach ($links as $view => $link) { ?>
-						<li class="nav_link"><a href="<?= $link ?>"><?= $labels[$view] ?></a></li>
+						<li class="nav_link"><a href="<?= $link ?>"><?= isset($labels[$view]) ? $labels[$view] : 'View as ' . $view ?></a></li>
 <?php } ?>
 					</ul>
 					<div class="clearing"></div>

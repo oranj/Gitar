@@ -53,6 +53,13 @@ if (file_exists($repo_path) && is_dir($repo_path)) {
 		$viewParam = null;
 		if (preg_match('/\.(?P<ext>[a-z]{1,5})$/', $file_path, $matches)) {
 			switch(strtolower($matches['ext'])) {
+				case 'bmp':
+				case 'png':
+				case 'jpg':
+				case 'jpeg':
+					$available_views []= 'img';
+					$viewParam = 'img';
+					break;
 				case 'md':
 					$available_views []= 'md';
 					$viewParam = 'framemd';
@@ -71,6 +78,9 @@ if (file_exists($repo_path) && is_dir($repo_path)) {
 		$this->template('file.template.php');
 		
 		switch ($viewParam) {
+			case 'img':
+				$this->view('img.view.php');
+				break;
 			case 'framemd':
 				$this->view('md.view.php');
 				break;
