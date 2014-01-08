@@ -2,12 +2,13 @@
 <div class="nav">
 	<ul>
 		<?php if ($this->page > 0) {?>
-		<li class="nav_link"><a href="<?= $this->repo_root ?>:logs/<?= $this->page - 1 ?>">&laquo; Later Logs</a></li>
+		<li class="nav_link"><a href="<?= $this->repo_root ?>:logs/<?= $this->page - 1 ?>">&laquo; Newer</a></li>
 <?php } /* not else */ if ($this->page < $this->total_pages-1) { ?>
-		<li class="nav_link"><a href="<?= $this->repo_root ?>:logs/<?= $this->page + 1 ?>">Earlier Logs &raquo;</a></li>
+		<li class="nav_link"><a href="<?= $this->repo_root ?>:logs/<?= $this->page + 1 ?>">Older &raquo;</a></li>
 <?php } ?>
 
 		<li class="nav_link"><a href="<?= $this->repo_root ?>">View Filesystem</a></li>
+		<li><?= $this->branchSwitcher->render() ?></li>
 
 	</ul>
 	<div class="clearing"></div>
@@ -35,9 +36,9 @@
 <div class="nav">
 	<ul>
 <?php if ($this->page > 0) {?>
-		<li class="nav_link"><a href="<?= $this->repo_root ?>:logs/<?= $this->page - 1 ?>">&laquo; Later Logs</a></li>
+		<li class="nav_link"><a href="<?= $this->repo_root ?>:logs/<?= $this->page - 1 ?>">&laquo; Newer</a></li>
 <?php } /* not else */ if ($this->page < $this->total_pages-1) { ?>
-		<li class="nav_link"><a href="<?= $this->repo_root ?>:logs/<?= $this->page + 1 ?>">Earlier Logs &raquo;</a></li>
+		<li class="nav_link"><a href="<?= $this->repo_root ?>:logs/<?= $this->page + 1 ?>">Older &raquo;</a></li>
 <?php } ?>
 		<li class="nav_link"><a href="<?= $this->repo_root ?>">View Filesystem</a></li>
 

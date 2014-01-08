@@ -91,7 +91,7 @@ function parseLog($log) {
 
 function getCommitCount($repo_path, $branch) {
 	chdir($repo_path);
-	$count = shell_exec("git rev-list HEAD --count");
+	$count = shell_exec("git rev-list $branch --count");
 	return $count;
 }
 

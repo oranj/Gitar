@@ -50,8 +50,7 @@ foreach ($lines as $line) {
 		<td class="line_no"><?= $line_no ?></td>
 		<td class="old_line_no"><?= $old_line_no ?></td>
 		<td class="line"><?= htmlentities($line) ?></td>
-	</tr>
-</div><?php
+	</tr><?php
 		$line_no++;
 		$old_line_no++;
 	} else {
@@ -60,3 +59,4 @@ foreach ($lines as $line) {
 }
 
 ?>
+</table>

@@ -32,7 +32,7 @@
 					<div class="iconic folder_stroke"></div>
 				<?php } ?>
 				</td>
-				<td style="width:100%"><a href="<?= $url ?>"><?= $path ?></td>
+				<td style="width:100%"><a href="<?= $url ?>"><?= $path ?></a></td>
 			</tr>
 		<?php } ?>
 	</table>
@@ -53,7 +53,7 @@
 	?>
 		<tr>
 			<td></td>
-			<td style="width:100%"><a href="<?= $url ?>"><?= $filename ?></td>
+			<td style="width:100%"><a href="<?= $url ?>"><?= $filename ?></a></td>
 		</tr>
 	<?php } ?>
 	</table>
