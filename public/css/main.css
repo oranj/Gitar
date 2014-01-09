@@ -259,7 +259,7 @@ code {
 pre, code {
   background: #333;
   color: white;
-  font-family: Consolas,"Courier New",Courier,monospace;
+  font-family: Consolas, "Courier New", Courier, monospace;
   font-size: .9em;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -390,6 +390,7 @@ table.file_list tr:nth-child(2n+1) td {
 #footer_icon {
   width: 42px;
   height: 42px;
-  margin: 10px auto;
-  background: url("/img/gitarsm.png") no-repeat center;
+  margin: 10px auto 0px;
+  background: url("/img/gitarsm.png") no-repeat center top;
+  padding-bottom: 10px;
 }

@@ -115,8 +115,6 @@ h1 {
 		a {
 			color: #fff;
 		}
-		&.nav_link:hover! a {
-		}
 	}
 }
 
@@ -240,7 +238,7 @@ ul.selection {
 	text-decoration: none;
 	border-radius: 3px;
 	box-shadow: 0px 0px 3px rgba(156, 156, 156, 0.6);
-	background: linear-gradient(#fafafa, gainsboro);
+	background: linear-gradient(#fafafa, #DCDCDC);
 	text-shadow: 0px 1px 0px #fff;
 }
 
@@ -408,6 +406,7 @@ table.file_list tr:nth-child(2n+1) td {
 #footer_icon {
 	width: 42px;
 	height: 42px;
-	margin: 10px auto;
-	background: url('/img/gitarsm.png') no-repeat center;
+	margin: 10px auto 0px;
+	background: url('/img/gitarsm.png') no-repeat center top;
+	padding-bottom:10px;
 }
