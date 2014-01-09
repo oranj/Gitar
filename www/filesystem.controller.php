@@ -55,6 +55,7 @@ if (file_exists($repo_path) && is_dir($repo_path)) {
 			switch(strtolower($matches['ext'])) {
 				case 'bmp':
 				case 'png':
+				case 'gif':
 				case 'jpg':
 				case 'jpeg':
 					$available_views []= 'img';
