@@ -26,7 +26,7 @@
 		</div>
 		<?php if ($log['author_gravatar']) { ?>
 		<div class="panel_image">
-			<img src="http://www.gravatar.com/avatar/<?= $log['author_gravatar'] ?>?s=60&amp;d=identicon&amp;r=pg" />
+			<img src="http://www.gravatar.com/avatar/<?= $log['author_gravatar'] ?>?s=60&amp;d=mm&amp;r=pg" />
 		</div>
 		<?php } ?>
 		<div class="panel_author">
