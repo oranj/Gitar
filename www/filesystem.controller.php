@@ -51,6 +51,9 @@ if (file_exists($repo_path) && is_dir($repo_path)) {
 		$View->file_contents = $contents;
 		$available_views = array('raw');
 		$viewParam = null;
+		$View->is_img = false;
+		$View->is_binary = (is_string($contents) === true && ctype_print($contents) === false);
+	
 		if (preg_match('/\.(?P<ext>[a-z]{1,5})$/', $file_path, $matches)) {
 			switch(strtolower($matches['ext'])) {
 				case 'bmp':
@@ -58,6 +61,7 @@ if (file_exists($repo_path) && is_dir($repo_path)) {
 				case 'gif':
 				case 'jpg':
 				case 'jpeg':
+					$View->is_img = true;
 					$available_views []= 'img';
 					$viewParam = 'img';
 					break;
@@ -72,6 +76,7 @@ if (file_exists($repo_path) && is_dir($repo_path)) {
 					break;
 			}
 		}
+
 		if($this->param('view')) {
 			$viewParam = $this->param('view');
 		}

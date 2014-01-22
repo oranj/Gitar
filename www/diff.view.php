@@ -3,11 +3,16 @@
 $contents = str_replace("\t", "    ", htmlentities($this->file_contents));
 $contents = str_replace(" ", "&nbsp;", $contents);
 $lines = explode("\n", $this->file_contents);
-
+$is_binary = $this->is_binary;
 
 $diff = $this->diff;
 ?>
-
+<?php if ($this->is_binary) { ?>
+<h2>Binar file differs</h2>
+	<?php if ($this->is_img) { ?>
+		<img src="<?= sprintf("%s%s:%s", $this->branch_url, $this->file_path, 'raw') ?>" style="max-width: 100%" />
+	<?php } ?>
+<?php } else { ?>
 <table class="codeblock">
 <?php
 $line_no = 1;
@@ -60,3 +65,4 @@ foreach ($lines as $line) {
 
 ?>
 </table>
+<?php } ?>
