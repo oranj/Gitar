@@ -8,7 +8,7 @@ $is_binary = $this->is_binary;
 $diff = $this->diff;
 ?>
 <?php if ($this->is_binary) { ?>
-<h2>Binar file differs</h2>
+<h2>Binary file differs</h2>
 	<?php if ($this->is_img) { ?>
 		<img src="<?= sprintf("%s%s:%s", $this->branch_url, $this->file_path, 'raw') ?>" style="max-width: 100%" />
 	<?php } ?>
